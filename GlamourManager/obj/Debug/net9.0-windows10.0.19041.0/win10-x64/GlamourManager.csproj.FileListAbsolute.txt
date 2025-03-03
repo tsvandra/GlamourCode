@@ -560,3 +560,4 @@ C:\Codes\Tomi\Glamour_Code\GlamourManager\bin\Debug\net9.0-windows10.0.19041.0\w
 C:\Codes\Tomi\Glamour_Code\GlamourManager\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.Maui.Controls.Compatibility.dll
 C:\Codes\Tomi\Glamour_Code\GlamourManager\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\GlamourManager.Data.dll
 C:\Codes\Tomi\Glamour_Code\GlamourManager\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\GlamourManager.Data.pdb
+C:\Codes\Tomi\Glamour_Code\GlamourManager\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\GlamourManager.sourcelink.json

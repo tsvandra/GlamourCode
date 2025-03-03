@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GlamourManager.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb3e3fb82dffb766f3d31a08338f17bdd14f69de")]
 [assembly: System.Reflection.AssemblyProductAttribute("GlamourManager.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GlamourManager.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

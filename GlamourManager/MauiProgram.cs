@@ -17,15 +17,15 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        // Add DbContext with SQL Authentication
+        // Add DbContext
         builder.Services.AddDbContext<GlamourDbContext>(options =>
-            options.UseSqlServer("Server=NITRO;Database=Glamour;User Id=sa;Password=.tomAsk08.;TrustServerCertificate=True;"));
+            options.UseSqlServer("Server=NITRO;Database=Glamour;Trusted_Connection=True;TrustServerCertificate=True;"));
 
         // Register pages
         builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<AppointmentsPage>();
         builder.Services.AddTransient<ServicesPage>();
-        builder.Services.AddTransient<App>();  // Changed from Singleton to Transient
+        builder.Services.AddSingleton<App>();
 
 #if DEBUG
         builder.Logging.AddDebug();

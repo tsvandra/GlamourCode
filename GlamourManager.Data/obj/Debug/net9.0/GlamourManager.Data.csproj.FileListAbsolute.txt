@@ -12,3 +12,4 @@ C:\Codes\Tomi\Glamour_Code\GlamourManager.Data\obj\Debug\net9.0\refint\GlamourMa
 C:\Codes\Tomi\Glamour_Code\GlamourManager.Data\obj\Debug\net9.0\GlamourManager.Data.pdb
 C:\Codes\Tomi\Glamour_Code\GlamourManager.Data\obj\Debug\net9.0\GlamourManager.Data.genruntimeconfig.cache
 C:\Codes\Tomi\Glamour_Code\GlamourManager.Data\obj\Debug\net9.0\ref\GlamourManager.Data.dll
+C:\Codes\Tomi\Glamour_Code\GlamourManager.Data\obj\Debug\net9.0\GlamourManager.Data.sourcelink.json
