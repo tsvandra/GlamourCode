@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             x:Class="GlamourManager.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Label 
+                Text="Glamour Hair Salon"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="ViewAppointmentsButton"
+                Text="View My Appointments"
+                Clicked="OnViewAppointmentsClicked"
+                HorizontalOptions="Fill" />
+
+            <Border Padding="20" Stroke="Gray">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Book an Appointment" 
+                           Style="{StaticResource SubHeadline}"
+                           HorizontalOptions="Center"/>
+
+                    <Entry x:Name="NameEntry"
+                           Placeholder="Your Name"
+                           SemanticProperties.Hint="Enter your full name"/>
+
+                    <Entry x:Name="PhoneEntry"
+                           Placeholder="Phone Number"
+                           Keyboard="Telephone"/>
+
+                    <Entry x:Name="EmailEntry"
+                           Placeholder="Email"
+                           Keyboard="Email"/>
+
+                    <Picker x:Name="ServicePicker"
+                            Title="Select Service"
+                            SelectedIndexChanged="OnServiceSelected"/>
+                    
+                    <StackLayout x:Name="ServiceDetailsPanel" IsVisible="False">
+                        <Label Text="{Binding Source={x:Reference ServicePicker}, Path=SelectedItem.Description}"
+                               TextColor="Gray"/>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Duration: "/>
+                                    <Span Text="{Binding Source={x:Reference ServicePicker}, Path=SelectedItem.DurationMinutes}"/>
+                                    <Span Text=" minutes"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Price: $"/>
+                                    <Span Text="{Binding Source={x:Reference ServicePicker}, Path=SelectedItem.Price}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <Picker x:Name="StylistPicker"
+                            Title="Select Stylist"/>
+
+                    <DatePicker x:Name="AppointmentDate"
+                              MinimumDate="{x:Static sys:DateTime.Today}"
+                              Format="D"/>
+
+                    <TimePicker x:Name="AppointmentTime"
+                              Time="09:00:00"/>
+
+                    <Button x:Name="BookButton"
+                            Text="Book Appointment"
+                            Clicked="OnBookClicked"
+                            HorizontalOptions="Fill"/>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

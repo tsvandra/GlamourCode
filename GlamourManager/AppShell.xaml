@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="GlamourManager.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:GlamourManager"
+    Shell.FlyoutBehavior="Flyout"
+    Title="Glamour Hair Salon">
+
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="#512BD4" HeightRequest="100">
+            <Label Text="Glamour Hair Salon" 
+                   TextColor="White" 
+                   FontSize="24" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Book Appointment" Route="MainPage">
+        <ShellContent 
+            Title="Book"
+            ContentTemplate="{DataTemplate local:MainPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Our Services" Route="ServicesPage">
+        <ShellContent 
+            Title="Services"
+            ContentTemplate="{DataTemplate local:ServicesPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="My Appointments" Route="AppointmentsPage">
+        <ShellContent 
+            Title="Appointments"
+            ContentTemplate="{DataTemplate local:AppointmentsPage}" />
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <StackLayout Padding="20">
+            <Label Text="Glamour Hair Salon v1.0" 
+                   TextColor="Gray" 
+                   HorizontalOptions="Center" />
+        </StackLayout>
+    </Shell.FlyoutFooter>
+
+</Shell>

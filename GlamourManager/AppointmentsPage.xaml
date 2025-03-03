@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GlamourManager.AppointmentsPage"
+             Title="My Appointments">
+
+    <Grid RowDefinitions="Auto,*">
+        <Label Text="My Appointments"
+               Style="{StaticResource Headline}"
+               Margin="20,10"
+               HorizontalOptions="Center"/>
+
+        <CollectionView Grid.Row="1" 
+                        x:Name="AppointmentsCollection"
+                        Margin="20">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="Gray"
+                            StrokeThickness="1"
+                            Margin="0,5">
+                        <Grid Padding="10" 
+                              RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                              ColumnDefinitions="*,Auto">
+                            
+                            <Label Grid.Row="0" Grid.Column="0"
+                                   Text="{Binding Service.Name}"
+                                   FontAttributes="Bold"/>
+                            
+                            <Label Grid.Row="0" Grid.Column="1"
+                                   Text="{Binding StatusName}"
+                                   TextColor="{Binding StatusColor}"
+                                   FontAttributes="Bold"/>
+                            
+                            <Label Grid.Row="1" Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding Client.Name}"/>
+                                   
+                            <Label Grid.Row="2" Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding Stylist.Name}"/>
+                            
+                            <Label Grid.Row="3" Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   Text="{Binding DateTime, StringFormat='{0:dddd, MMMM d, yyyy at h:mm tt}'}"/>
+
+                            <Label Grid.Row="4" Grid.Column="0"
+                                   Grid.ColumnSpan="2">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Duration: "/>
+                                        <Span Text="{Binding Service.DurationMinutes}"/>
+                                        <Span Text=" minutes - Price: $"/>
+                                        <Span Text="{Binding Service.Price}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <!-- Action Buttons -->
+                            <HorizontalStackLayout Grid.Row="5" Grid.ColumnSpan="2"
+                                                  Spacing="5" Margin="0,10,0,0"
+                                                  HorizontalOptions="Fill">
+                                
+                                <!-- Accept Button - Only shown for Pending appointments -->
+                                <Button Text="Accept"
+                                        IsVisible="{Binding ShowAcceptButton}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=AcceptAppointmentCommand}"
+                                        CommandParameter="{Binding}"
+                                        BackgroundColor="Green"
+                                        TextColor="White"
+                                        HorizontalOptions="Fill"/>
+                                
+                                <!-- Refuse Button - Only shown for Pending appointments -->
+                                <Button Text="Refuse"
+                                        IsVisible="{Binding ShowRefuseButton}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=RefuseAppointmentCommand}"
+                                        CommandParameter="{Binding}"
+                                        BackgroundColor="Orange"
+                                        TextColor="White"
+                                        HorizontalOptions="Fill"/>
+
+                                <!-- Done Button - Only shown for Accepted appointments -->
+                                <Button Text="Done"
+                                        IsVisible="{Binding ShowDoneButton}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=DoneAppointmentCommand}"
+                                        CommandParameter="{Binding}"
+                                        BackgroundColor="Purple"
+                                        TextColor="White"
+                                        HorizontalOptions="Fill"/>
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout Grid.Row="6" Grid.ColumnSpan="2"
+                                                  Spacing="5" Margin="0,5,0,0"
+                                                  HorizontalOptions="Fill">
+                                                  
+                                <!-- Cancel Button - Shown for Pending and Accepted appointments -->
+                                <Button Text="Cancel"
+                                        IsVisible="{Binding ShowCancelButton}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=CancelAppointmentCommand}"
+                                        CommandParameter="{Binding}"
+                                        BackgroundColor="#dc3545"
+                                        TextColor="White"
+                                        HorizontalOptions="Fill"/>
+                                
+                                <!-- Restore Button - Shown for Cancelled/Refused/Accepted appointments -->
+                                <Button Text="Restore to Pending"
+                                        IsVisible="{Binding ShowRestoreButton}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=RestoreAppointmentCommand}"
+                                        CommandParameter="{Binding}"
+                                        BackgroundColor="#6c757d"
+                                        TextColor="White"
+                                        HorizontalOptions="Fill"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <VerticalStackLayout HorizontalOptions="Center" 
+                                   VerticalOptions="Center">
+                    <Label Text="No appointments found"
+                           HorizontalOptions="Center"/>
+                    <Button Text="Book an Appointment"
+                            Clicked="OnBookNewClicked"
+                            Margin="0,10"/>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </Grid>
+</ContentPage>
